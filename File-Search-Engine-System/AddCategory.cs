@@ -16,5 +16,10 @@ namespace File_Search_Engine_System
         {
             InitializeComponent();
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
