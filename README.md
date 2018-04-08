@@ -1,4 +1,4 @@
-# File-Search-Engine-System (C# & XML Files)
+# File-Search-Engine-System (C#, XML Files)
 
 This project will be like a search engine at the end user's text files.
 • The end user will add his own text files
