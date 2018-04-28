@@ -1,0 +1,12 @@
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\File-Search-Engine-System.exe.config
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\File-Search-Engine-System.exe
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\File-Search-Engine-System.pdb
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.csprojResolveAssemblyReference.cache
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.Properties.Resources.resources
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.csproj.GenerateResource.Cache
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.exe
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.pdb
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.Home.resources
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.AddCategory.resources
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.AddFile.resources

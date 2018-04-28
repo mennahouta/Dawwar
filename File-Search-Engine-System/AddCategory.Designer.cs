@@ -28,71 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AddCatTextBox = new System.Windows.Forms.TextBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.AddcatLbL = new System.Windows.Forms.Label();
-            this.AddKeywordLbl = new System.Windows.Forms.Label();
-            this.AddKeywordTextBox = new System.Windows.Forms.TextBox();
-            this.AddButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.CategorytextBox = new System.Windows.Forms.TextBox();
+            this.KeywordtextBox = new System.Windows.Forms.TextBox();
+            this.AddKeywordButton = new System.Windows.Forms.Button();
+            this.DoneButton = new System.Windows.Forms.Button();
+            this.homeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // AddCatTextBox
+            // CategorytextBox
             // 
-            this.AddCatTextBox.Location = new System.Drawing.Point(325, 47);
-            this.AddCatTextBox.Name = "AddCatTextBox";
-            this.AddCatTextBox.Size = new System.Drawing.Size(100, 22);
-            this.AddCatTextBox.TabIndex = 0;
+            this.CategorytextBox.Location = new System.Drawing.Point(186, 121);
+            this.CategorytextBox.Name = "CategorytextBox";
+            this.CategorytextBox.Size = new System.Drawing.Size(168, 24);
+            this.CategorytextBox.TabIndex = 0;
             // 
-            // AddcatLbL
+            // KeywordtextBox
             // 
-            this.AddcatLbL.AutoSize = true;
-            this.AddcatLbL.Location = new System.Drawing.Point(49, 52);
-            this.AddcatLbL.Name = "AddcatLbL";
-            this.AddcatLbL.Size = new System.Drawing.Size(135, 17);
-            this.AddcatLbL.TabIndex = 1;
-            this.AddcatLbL.Text = "Add Category Name";
+            this.KeywordtextBox.Location = new System.Drawing.Point(186, 224);
+            this.KeywordtextBox.Name = "KeywordtextBox";
+            this.KeywordtextBox.Size = new System.Drawing.Size(168, 24);
+            this.KeywordtextBox.TabIndex = 1;
             // 
-            // AddKeywordLbl
+            // AddKeywordButton
             // 
-            this.AddKeywordLbl.AutoSize = true;
-            this.AddKeywordLbl.Location = new System.Drawing.Point(49, 199);
-            this.AddKeywordLbl.Name = "AddKeywordLbl";
-            this.AddKeywordLbl.Size = new System.Drawing.Size(91, 17);
-            this.AddKeywordLbl.TabIndex = 2;
-            this.AddKeywordLbl.Text = "Add Keyword";
+            this.AddKeywordButton.Location = new System.Drawing.Point(395, 111);
+            this.AddKeywordButton.Name = "AddKeywordButton";
+            this.AddKeywordButton.Size = new System.Drawing.Size(66, 32);
+            this.AddKeywordButton.TabIndex = 3;
+            this.AddKeywordButton.Text = "Add";
+            this.AddKeywordButton.UseVisualStyleBackColor = true;
+            this.AddKeywordButton.Click += new System.EventHandler(this.AddKeywordButton_Click);
             // 
-            // AddKeywordTextBox
+            // DoneButton
             // 
-            this.AddKeywordTextBox.Location = new System.Drawing.Point(325, 194);
-            this.AddKeywordTextBox.Name = "AddKeywordTextBox";
-            this.AddKeywordTextBox.Size = new System.Drawing.Size(100, 22);
-            this.AddKeywordTextBox.TabIndex = 3;
+            this.DoneButton.Location = new System.Drawing.Point(232, 350);
+            this.DoneButton.Name = "DoneButton";
+            this.DoneButton.Size = new System.Drawing.Size(66, 23);
+            this.DoneButton.TabIndex = 4;
+            this.DoneButton.Text = "DONE";
+            this.DoneButton.UseVisualStyleBackColor = true;
+            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
-            // AddButton
+            // homeButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(224, 289);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 4;
-            this.AddButton.Text = "Done";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.homeButton.Location = new System.Drawing.Point(400, 368);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(75, 35);
+            this.homeButton.TabIndex = 5;
+            this.homeButton.Text = "Home";
+            this.homeButton.UseVisualStyleBackColor = true;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
             // 
             // AddCategory
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 500);
-            this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.AddKeywordTextBox);
-            this.Controls.Add(this.AddKeywordLbl);
-            this.Controls.Add(this.AddcatLbL);
-            this.Controls.Add(this.AddCatTextBox);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(526, 459);
+            this.Controls.Add(this.homeButton);
+            this.Controls.Add(this.DoneButton);
+            this.Controls.Add(this.AddKeywordButton);
+            this.Controls.Add(this.KeywordtextBox);
+            this.Controls.Add(this.CategorytextBox);
             this.Name = "AddCategory";
-            this.Text = "AddCategory";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.Text = "Form1";
+            this.Load += new System.EventHandler(this.AddCategory_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -100,11 +100,11 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox AddCatTextBox;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Label AddcatLbL;
-        private System.Windows.Forms.Label AddKeywordLbl;
-        private System.Windows.Forms.TextBox AddKeywordTextBox;
-        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.TextBox CategorytextBox;
+        private System.Windows.Forms.TextBox KeywordtextBox;
+        private System.Windows.Forms.Button AddKeywordButton;
+        private System.Windows.Forms.Button DoneButton;
+        private System.Windows.Forms.Button homeButton;
     }
 }
+

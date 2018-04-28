@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Categories>
+  <Category>
+    <CategoryName>Sport</CategoryName>
+    <Keyword>Volleyball</Keyword>
+    <Keyword>Tennis</Keyword>
+    <Keyword>Running</Keyword>
+    <Keyword>play</Keyword>
+    <Keyword>ball</Keyword>
+    <Keyword>swimming</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Food</CategoryName>
+    <Keyword>meat</Keyword>
+    <Keyword>rice</Keyword>
+    <Keyword>grapes</Keyword>
+    <Keyword>mango</Keyword>
+    <Keyword>onion</Keyword>
+    <Keyword>salt</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Movies</CategoryName>
+    <Keyword>Twilight</Keyword>
+    <Keyword>Mulan</Keyword>
+    <Keyword>Up</Keyword>
+  </Category>
+</Categories>
