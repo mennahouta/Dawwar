@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddCategory));
             this.CategorytextBox = new System.Windows.Forms.TextBox();
-            this.KeywordtextBox = new System.Windows.Forms.TextBox();
-            this.AddKeywordButton = new System.Windows.Forms.Button();
             this.DoneButton = new System.Windows.Forms.Button();
             this.filesButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
@@ -39,39 +37,34 @@
             this.infoRichTextBox = new System.Windows.Forms.RichTextBox();
             this.catCombo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CategorytextBox
             // 
-            this.CategorytextBox.Location = new System.Drawing.Point(504, 120);
+            this.CategorytextBox.BackColor = System.Drawing.Color.White;
+            this.CategorytextBox.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.CategorytextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(1)))), ((int)(((byte)(44)))));
+            this.CategorytextBox.Location = new System.Drawing.Point(560, 95);
             this.CategorytextBox.Name = "CategorytextBox";
-            this.CategorytextBox.Size = new System.Drawing.Size(168, 24);
+            this.CategorytextBox.Size = new System.Drawing.Size(257, 31);
             this.CategorytextBox.TabIndex = 0;
-            // 
-            // KeywordtextBox
-            // 
-            this.KeywordtextBox.Location = new System.Drawing.Point(504, 171);
-            this.KeywordtextBox.Name = "KeywordtextBox";
-            this.KeywordtextBox.Size = new System.Drawing.Size(168, 24);
-            this.KeywordtextBox.TabIndex = 1;
-            // 
-            // AddKeywordButton
-            // 
-            this.AddKeywordButton.Location = new System.Drawing.Point(723, 166);
-            this.AddKeywordButton.Name = "AddKeywordButton";
-            this.AddKeywordButton.Size = new System.Drawing.Size(66, 32);
-            this.AddKeywordButton.TabIndex = 3;
-            this.AddKeywordButton.Text = "Add";
-            this.AddKeywordButton.UseVisualStyleBackColor = true;
-            this.AddKeywordButton.Click += new System.EventHandler(this.AddKeywordButton_Click);
             // 
             // DoneButton
             // 
-            this.DoneButton.Location = new System.Drawing.Point(820, 171);
+            this.DoneButton.FlatAppearance.BorderSize = 0;
+            this.DoneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoneButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.DoneButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(44)))));
+            this.DoneButton.Image = ((System.Drawing.Image)(resources.GetObject("DoneButton.Image")));
+            this.DoneButton.Location = new System.Drawing.Point(802, 319);
             this.DoneButton.Name = "DoneButton";
-            this.DoneButton.Size = new System.Drawing.Size(66, 23);
+            this.DoneButton.Size = new System.Drawing.Size(101, 65);
             this.DoneButton.TabIndex = 4;
-            this.DoneButton.Text = "DONE";
+            this.DoneButton.Text = "Add";
+            this.DoneButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.DoneButton.UseVisualStyleBackColor = true;
             this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
             // 
@@ -116,7 +109,7 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(515, 9);
+            this.label1.Location = new System.Drawing.Point(515, -2);
             this.label1.MaximumSize = new System.Drawing.Size(500, 500);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(179, 70);
@@ -127,11 +120,11 @@
             this.infoRichTextBox.BackColor = System.Drawing.Color.White;
             this.infoRichTextBox.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.infoRichTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(1)))), ((int)(((byte)(44)))));
-            this.infoRichTextBox.Location = new System.Drawing.Point(395, 421);
+            this.infoRichTextBox.Location = new System.Drawing.Point(390, 463);
             this.infoRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.infoRichTextBox.Name = "infoRichTextBox";
             this.infoRichTextBox.ReadOnly = true;
-            this.infoRichTextBox.Size = new System.Drawing.Size(452, 185);
+            this.infoRichTextBox.Size = new System.Drawing.Size(452, 157);
             this.infoRichTextBox.TabIndex = 21;
             this.infoRichTextBox.Text = "";
             this.infoRichTextBox.Visible = false;
@@ -141,9 +134,9 @@
             this.catCombo.BackColor = System.Drawing.Color.White;
             this.catCombo.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.catCombo.FormattingEnabled = true;
-            this.catCombo.Location = new System.Drawing.Point(560, 373);
+            this.catCombo.Location = new System.Drawing.Point(560, 417);
             this.catCombo.Name = "catCombo";
-            this.catCombo.Size = new System.Drawing.Size(261, 34);
+            this.catCombo.Size = new System.Drawing.Size(257, 34);
             this.catCombo.TabIndex = 20;
             this.catCombo.SelectedIndexChanged += new System.EventHandler(this.catCombo_SelectedIndexChanged);
             // 
@@ -152,11 +145,45 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(409, 376);
+            this.label4.Location = new System.Drawing.Point(400, 425);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 26);
             this.label4.TabIndex = 19;
             this.label4.Text = "Category Info:";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
+            this.richTextBox1.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.richTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(1)))), ((int)(((byte)(44)))));
+            this.richTextBox1.Location = new System.Drawing.Point(560, 144);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(257, 157);
+            this.richTextBox1.TabIndex = 22;
+            this.richTextBox1.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
+            this.label2.Location = new System.Drawing.Point(344, 204);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(201, 26);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Category Keywords:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
+            this.label3.Location = new System.Drawing.Point(385, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(162, 26);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Category Name:";
             // 
             // AddCategory
             // 
@@ -164,6 +191,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(915, 633);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.infoRichTextBox);
             this.Controls.Add(this.catCombo);
             this.Controls.Add(this.label4);
@@ -171,8 +201,6 @@
             this.Controls.Add(this.homeButton);
             this.Controls.Add(this.filesButton);
             this.Controls.Add(this.DoneButton);
-            this.Controls.Add(this.AddKeywordButton);
-            this.Controls.Add(this.KeywordtextBox);
             this.Controls.Add(this.CategorytextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -189,8 +217,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox CategorytextBox;
-        private System.Windows.Forms.TextBox KeywordtextBox;
-        private System.Windows.Forms.Button AddKeywordButton;
         private System.Windows.Forms.Button DoneButton;
         private System.Windows.Forms.Button filesButton;
         private System.Windows.Forms.Button homeButton;
@@ -198,6 +224,9 @@
         private System.Windows.Forms.RichTextBox infoRichTextBox;
         private System.Windows.Forms.ComboBox catCombo;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

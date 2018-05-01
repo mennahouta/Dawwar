@@ -25,36 +25,8 @@ namespace File_Search_Engine_System
         Dictionary<string, bool> CheckDict = new Dictionary<string, bool>();
 
         string categoryname, keyword;
-        List<string> l = new List<string>();
-
-        private void AddKeywordButton_Click(object sender, EventArgs e)
-        {
-            if (KeywordtextBox.Text.Length == 0)
-            {
-                MessageBox.Show("Please enter a valid keyword.");
-                return;
-            }
-            if (!File.Exists("Categories.xml"))
-            {
-
-                keyword = KeywordtextBox.Text;
-
-                l.Add(keyword);
-                KeywordtextBox.Clear();
-            }
-            else
-            {
-                if (!D.ContainsKey(CategorytextBox.Text))
-                {
-                    keyword = KeywordtextBox.Text;
-
-                    l.Add(keyword);
-                    KeywordtextBox.Clear();
-
-                }
-
-            }
-        }
+        List<string> richlist = new List<string>();
+        //List<string> l = new List<string>();
 
         private void AddCategory_Load(object sender, EventArgs e)
         {
@@ -92,29 +64,52 @@ namespace File_Search_Engine_System
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
-           
-            catCombo.Items.Add(CategorytextBox.Text);
+            richlist.Clear();
+
+            if(CategorytextBox.Text.Length==0)
+            {
+                MessageBox.Show("Please enter category name.");
+                return;
+            }
+
+            string[] RichTextBoxLines = richTextBox1.Lines;
+
+            if(RichTextBoxLines.Length == 0)
+            {
+                MessageBox.Show("Please add at least one keyword.");
+                return;
+            }
+
+            foreach (string line in RichTextBoxLines)
+            {
+                if(line.Length!=0)
+                    richlist.Add(line);
+            }
 
             if (!File.Exists("Categories.xml"))
             {
                 XmlWriter writer = XmlWriter.Create("Categories.xml");
                 writer.WriteStartDocument();
-                List<string> newlist = new List<string>();
+
                 if (CheckDict.ContainsKey(CategorytextBox.Text))
                     MessageBox.Show("This Category is already added!");
+
                 else
                 {
                     categoryname = CategorytextBox.Text;
-                    D.Add(categoryname, l);
+
+                    D.Add(categoryname, richlist);
                     CheckDict[categoryname] = true;
 
                     Category C = new Category();
                     C.categoryName = categoryname;
-                    Home.mapOfCategories[C.categoryName] = C;
-                    foreach (string keyword in l)
+                    foreach(string keyword in richlist)
                     {
-                        Home.mapOfCategories[C.categoryName].keywords.Add(keyword);
+                         C.keywords.Add(keyword);
                     }
+                    Home.mapOfCategories[C.categoryName] = C;
+
+                    catCombo.Items.Add(C.categoryName);
 
                     MessageBox.Show("This category is successfully added!");
                     writer.WriteStartElement("Categories");
@@ -139,31 +134,34 @@ namespace File_Search_Engine_System
                     writer.WriteEndDocument();
                     writer.Close();
 
-                    l.Clear();
+                    CategorytextBox.Clear();
+                    richTextBox1.Clear();
                 }
             }
-
             else
             {
 
+
                 XmlDocument doc = new XmlDocument();
                 doc.Load("Categories.xml");
-                List<string> newlist = new List<string>();
+
                 if (CheckDict.ContainsKey(CategorytextBox.Text))
                     MessageBox.Show("This Category is already added!");
                 else
                 {
                     categoryname = CategorytextBox.Text;
-                    D.Add(categoryname, l);
+
+                    D.Add(categoryname, richlist);
                     CheckDict[categoryname] = true;
 
                     Category C = new Category();
-                    C.categoryName = categoryname; ;
-                    Home.mapOfCategories[C.categoryName] = C;
-                    foreach(string keyword in l)
+                    C.categoryName = categoryname;
+                    foreach (string keyword in richlist)
                     {
-                        Home.mapOfCategories[C.categoryName].keywords.Add(keyword);
+                        C.keywords.Add(keyword);
                     }
+                    Home.mapOfCategories[C.categoryName] = C;
+                    catCombo.Items.Add(C.categoryName);
 
                     XmlElement cat = doc.CreateElement("Category");
 
@@ -176,15 +174,16 @@ namespace File_Search_Engine_System
                         XmlElement node1 = doc.CreateElement("Keyword");
                         node1.InnerText = x;
                         cat.AppendChild(node1);
-
                     }
                     XmlElement root = doc.DocumentElement;
                     root.AppendChild(cat);
                     doc.Save("Categories.xml");
 
-                    l.Clear();
-                }
+                    MessageBox.Show("Category is successfully added.");
 
+                }
+                CategorytextBox.Clear();
+                richTextBox1.Clear();
             }
         }
 

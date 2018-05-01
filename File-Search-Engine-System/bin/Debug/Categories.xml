@@ -50,9 +50,37 @@
   </Category>
   <Category>
     <CategoryName>Anime</CategoryName>
-    <Keyword>Shingeki no Kyojin</Keyword>
+    <Keyword>ShingekiNoKyojin</Keyword>
     <Keyword>Naruto</Keyword>
     <Keyword>Conan</Keyword>
     <Keyword>ERASED</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Shapes</CategoryName>
+    <Keyword>circle</Keyword>
+    <Keyword>triangle</Keyword>
+    <Keyword>square</Keyword>
+    <Keyword>rectangle</Keyword>
+    <Keyword>parallelogram</Keyword>
+    <Keyword>trapezoid</Keyword>
+    <Keyword>rhombus</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Colours</CategoryName>
+    <Keyword>red</Keyword>
+    <Keyword>blue</Keyword>
+    <Keyword>green</Keyword>
+    <Keyword>yellow</Keyword>
+    <Keyword>black</Keyword>
+    <Keyword>white</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Body Parts</CategoryName>
+    <Keyword>head</Keyword>
+    <Keyword>arm</Keyword>
+    <Keyword>hand</Keyword>
+    <Keyword>leg</Keyword>
+    <Keyword>foot</Keyword>
+    <Keyword>thigh</Keyword>
   </Category>
 </Categories>

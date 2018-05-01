@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Table Name="Files">
   <FileInfo>
-    <FileName>wa7ed</FileName>
-    <Path>C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\wa7ed.txt</Path>
+    <FileName>Wa7ed</FileName>
+    <Path>C:\Users\Menna\Source\Repos\Dawwar\Files\wa7ed.txt</Path>
     <Categories>Sport Movies </Categories>
   </FileInfo>
   <FileInfo>
     <FileName>Etnein</FileName>
-    <Path>C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\Etnein.txt</Path>
+    <Path>C:\Users\Menna\Source\Repos\Dawwar\Files\Etnein.txt</Path>
     <Categories>Sport Food Movies </Categories>
   </FileInfo>
   <FileInfo>
     <FileName>Talata</FileName>
-    <Path>C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\Talata.txt</Path>
+    <Path>C:\Users\Menna\Source\Repos\Dawwar\Files\Talata.txt</Path>
     <Categories>Food Courses Anime </Categories>
   </FileInfo>
 </Table>
