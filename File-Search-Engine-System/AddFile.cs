@@ -24,7 +24,51 @@ namespace File_Search_Engine_System
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loadFilesCombo()
+        {
+            foreach(KeyValuePair<string,FILE> KVP in Home.mapOfFiles)
+            {
+                fileCombo.Items.Add(KVP.Key);
+            }
+        }
+
+        private void AddFile_Load(object sender, EventArgs e)
+        {
+            loadFilesCombo();
+
+            if (!File.Exists("Categories.xml"))
+            { MessageBox.Show("Please Add Categories First"); }
+            else
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load("Categories.xml");
+                XmlNodeList List = doc.GetElementsByTagName("Category");
+                for (int i = 0; i < List.Count; i++)
+                {
+                    XmlNodeList child = List[i].ChildNodes;
+                    string Category = child[0].InnerText;
+                    catCheckList.Items.Add(Category);
+                    Categories_Name.Add(Category);
+                }
+
+            }
+        }
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            Home home = new File_Search_Engine_System.Home();
+            home.Show();
+            this.Hide();
+        }
+
+        private void catButton_Click(object sender, EventArgs e)
+        {
+            AddCategory cat = new File_Search_Engine_System.AddCategory();
+            cat.Show();
+            this.Hide();
+        }
+
+        private void newFileButton_Click(object sender, EventArgs e)
         {
             string str = textBox1.Text;
             //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
@@ -32,9 +76,9 @@ namespace File_Search_Engine_System
             str = str + ".txt";
             bool fg = false;
 
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            for (int i = 0; i < catCheckList.Items.Count; i++)
             {
-                if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
+                if (catCheckList.GetItemCheckState(i) == CheckState.Checked)
                 {
                     fg = true;
                     break;
@@ -42,11 +86,11 @@ namespace File_Search_Engine_System
             }
             if (str == ".txt")
             {
-                MessageBox.Show("Please Enter A Valid Name");
+                MessageBox.Show("Please Enter A Valid Name.");
             }
             else if (fg == false)
             {
-                MessageBox.Show("Please Select At Least 1 Category To Add File ");
+                MessageBox.Show("Please Select At Least 1 Category For The File.");
             }
             else
             {
@@ -54,7 +98,7 @@ namespace File_Search_Engine_System
                 {
                     File.Create(Url).Dispose();
 
-                    MessageBox.Show("File Added Successfully.. Click Edit File To Start Write ");
+                    MessageBox.Show("File Added Successfully. Click On Edit To Start Writing In The File.");
                     if (!File.Exists("TextFiles.xml"))
                     {
                         List<string> categories = new List<string>();
@@ -70,9 +114,9 @@ namespace File_Search_Engine_System
                         writer.WriteString(Url);
                         writer.WriteEndElement();
                         writer.WriteStartElement("Categories");
-                        for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                        for (int i = 0; i < catCheckList.Items.Count; i++)
                         {
-                            if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
+                            if (catCheckList.GetItemCheckState(i) == CheckState.Checked)
                             {
                                 writer.WriteString(Categories_Name[i]);
                                 writer.WriteString(" ");
@@ -89,8 +133,13 @@ namespace File_Search_Engine_System
                         FILE f = new FILE();
                         f.fileName = textBox1.Text;
                         f.path = Url;
-                        f.fileCategories = categories;
                         Home.mapOfFiles[f.fileName] = f;
+                        foreach (string cat in categories)
+                        {
+                            Home.mapOfFiles[f.fileName].fileCategories.Add(cat);
+                        }
+
+                        fileCombo.Items.Add(f.fileName);
 
                     }
                     else
@@ -107,9 +156,9 @@ namespace File_Search_Engine_System
                         node = doc.CreateElement("Categories");
                         bool f = false;
                         string node_text = "";
-                        for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                        for (int i = 0; i < catCheckList.Items.Count; i++)
                         {
-                            if (checkedListBox1.GetItemCheckState(i) == CheckState.Checked)
+                            if (catCheckList.GetItemCheckState(i) == CheckState.Checked)
                             {
                                 if (f == false)
                                 {
@@ -135,16 +184,22 @@ namespace File_Search_Engine_System
                         FILE ff = new FILE();
                         ff.fileName = textBox1.Text;
                         ff.path = Url;
-                        ff.fileCategories = categories;
                         Home.mapOfFiles[ff.fileName] = ff;
+                        foreach (string cat in categories)
+                        {
+                            Home.mapOfFiles[ff.fileName].fileCategories.Add(cat);
+                        }
+
+                        fileCombo.Items.Add(ff.fileName);
 
                     }
                 }
-                else { MessageBox.Show("This File Is Already Added.. If You Want To Edit This File Click On Edit File"); }
+                else { MessageBox.Show("This File Already Exists. If You Want To Edit This File Click On Edit."); }
             }
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void editFileButton_Click(object sender, EventArgs e)
         {
             string str = textBox1.Text;
             //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
@@ -152,34 +207,35 @@ namespace File_Search_Engine_System
             str = str + ".txt";
             if (str == ".txt")
             {
-                MessageBox.Show("Please Enter A Valid Name");
+                MessageBox.Show("Please Enter A Valid Name.");
             }
             else if (!File.Exists(Url))
             {
-                MessageBox.Show("This File Is Not Added.. If You Want To Add This File Click On Add File");
+                MessageBox.Show("This File Does Not Exist. If You Want To Add This File Click On Add.");
 
             }
             else { Process.Start(Url); }
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void deleteFileButton_Click(object sender, EventArgs e)
         {
             string str = textBox1.Text;
             //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
             string Url = path + str + ".txt";
             if (str == ".txt")
             {
-                MessageBox.Show("Please Enter A Valid Name");
+                MessageBox.Show("Please Enter A Valid Name.");
             }
             else if (File.Exists(Url))
             {
-                DialogResult result = MessageBox.Show("Are You Sure You Want TO Delete The File ?", "Warning", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Are You Sure You Want TO Delete The File?", "Warning", MessageBoxButtons.YesNo);
 
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
                     File.Delete(Url);
                     Home.mapOfFiles.Remove(str);
+                    fileCombo.Items.Remove(str);
                     XmlDocument doc = new XmlDocument();
                     doc.Load("TextFiles.xml");
                     XmlNodeList nodes = doc.GetElementsByTagName("FileInfo");
@@ -192,45 +248,84 @@ namespace File_Search_Engine_System
                         { nodes[i].ParentNode.RemoveChild(nodes[i]); }
                     }
                     doc.Save("TextFiles.xml");
-                    MessageBox.Show(" File Successfully Deleted ");
+                    MessageBox.Show("File Successfully Deleted.");
                 }
             }
             else
             {
-                MessageBox.Show(" No File Exists With That Name ");
+                MessageBox.Show("No File With That Name Exists.");
             }
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
-        private void AddFile_Load(object sender, EventArgs e)
+        private void fileCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!File.Exists("Categories.xml"))
-            { MessageBox.Show("Please Add Categories First"); }
-            else
+            infoRichTextBox.Visible = true;
+
+            infoRichTextBox.Clear();
+
+            string selcteditem = fileCombo.SelectedItem.ToString();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("TextFiles.xml");
+            XmlNodeList list = doc.GetElementsByTagName("FileInfo");
+
+            string FileTagName, FileNameValue, PathTagName, pathValue, CatTagName, CatValue;
+            for (int i = 0; i < list.Count; i++)
             {
-                XmlDocument doc = new XmlDocument();
-                doc.Load("Categories.xml");
-                XmlNodeList List = doc.GetElementsByTagName("Category");
-                for (int i = 0; i < List.Count; i++)
+                XmlNodeList node = list[i].ChildNodes;
+
+                //tags name
+                FileTagName = node[0].Name + ": ";
+                PathTagName = node[1].Name + ": ";
+                CatTagName = node[2].Name + ": ";
+
+                FileNameValue = node[0].InnerText;
+
+                if (selcteditem == FileNameValue)
                 {
-                    XmlNodeList child = List[i].ChildNodes;
-                    string Category = child[0].InnerText;
-                    checkedListBox1.Items.Add(Category);
-                    Categories_Name.Add(Category);
+
+                    pathValue = node[1].InnerText;
+                    CatValue = node[2].InnerText;
+
+                    string[] categories = CatValue.Split(' ');
+
+                    infoRichTextBox.Text += FileTagName + FileNameValue + Environment.NewLine;
+                    infoRichTextBox.Text += PathTagName + pathValue + Environment.NewLine;
+                    infoRichTextBox.Text += CatTagName;
+
+                    for (int j = 0; j < categories.Length - 1; j++)
+                    {
+                        if (j != categories.Length - 2)
+                            infoRichTextBox.Text += categories[j] + "  &  ";
+                        else
+                            infoRichTextBox.Text += categories[j];
+                    }
+
                 }
 
+                //coloring tag names
+                int start = 0;
+                int end = infoRichTextBox.Text.LastOrDefault();
+
+                while (start < end)
+                {
+                    infoRichTextBox.Find(FileTagName, start, infoRichTextBox.TextLength, RichTextBoxFinds.MatchCase);
+                    infoRichTextBox.SelectionColor = Color.DarkMagenta;
+                    infoRichTextBox.Find(PathTagName, start, infoRichTextBox.TextLength, RichTextBoxFinds.MatchCase);
+                    infoRichTextBox.SelectionColor = Color.DarkMagenta;
+
+                    infoRichTextBox.Find(CatTagName, start, infoRichTextBox.TextLength, RichTextBoxFinds.MatchCase);
+                    infoRichTextBox.SelectionColor = Color.DarkMagenta;
+                    start = infoRichTextBox.Text.LastOrDefault() + 1;
+                }
             }
+
         }
 
-        private void homeButton_Click(object sender, EventArgs e)
+        private void AddFile_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Home home = new File_Search_Engine_System.Home();
-            home.Show();
-            this.Hide();
+            Application.Exit();
         }
     }
 }

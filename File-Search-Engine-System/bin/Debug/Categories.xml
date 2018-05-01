@@ -24,4 +24,35 @@
     <Keyword>Mulan</Keyword>
     <Keyword>Up</Keyword>
   </Category>
+  <Category>
+    <CategoryName>Names</CategoryName>
+    <Keyword>Menna</Keyword>
+    <Keyword>Essam</Keyword>
+    <Keyword>Mai</Keyword>
+    <Keyword>Mohammad</Keyword>
+    <Keyword>Mohie</Keyword>
+    <Keyword>Eman</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Courses</CategoryName>
+    <Keyword>Files</Keyword>
+    <Keyword>OOP</Keyword>
+    <Keyword>Maths</Keyword>
+    <Keyword>Ethics</Keyword>
+    <Keyword>OR</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Furniture</CategoryName>
+    <Keyword>chair</Keyword>
+    <Keyword>sofa</Keyword>
+    <Keyword>fauteuil</Keyword>
+    <Keyword>table</Keyword>
+  </Category>
+  <Category>
+    <CategoryName>Anime</CategoryName>
+    <Keyword>Shingeki no Kyojin</Keyword>
+    <Keyword>Naruto</Keyword>
+    <Keyword>Conan</Keyword>
+    <Keyword>ERASED</Keyword>
+  </Category>
 </Categories>

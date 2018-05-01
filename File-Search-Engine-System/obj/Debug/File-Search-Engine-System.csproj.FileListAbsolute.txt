@@ -10,3 +10,10 @@ C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\
 C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.AddCategory.resources
 C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.AddFile.resources
+C:\Users\Menna\Source\Repos\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File_Search_Engine_System.Form1.resources
+C:\Users\Menna\Desktop\File-Search-Engine-System\File-Search-Engine-System\bin\Debug\File-Search-Engine-System.exe.config
+C:\Users\Menna\Desktop\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.exe
+C:\Users\Menna\Desktop\File-Search-Engine-System\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.pdb
+C:\Users\Menna\Source\Repos\Dawwar\File-Search-Engine-System\bin\Debug\File-Search-Engine-System.exe.config
+C:\Users\Menna\Source\Repos\Dawwar\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.exe
+C:\Users\Menna\Source\Repos\Dawwar\File-Search-Engine-System\obj\Debug\File-Search-Engine-System.pdb

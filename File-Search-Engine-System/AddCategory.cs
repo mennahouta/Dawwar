@@ -58,8 +58,9 @@ namespace File_Search_Engine_System
 
         private void AddCategory_Load(object sender, EventArgs e)
         {
-            if (File.Exists("Categories.xml"))
+            fillCatCombo();
 
+            if (File.Exists("Categories.xml"))
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load("Categories.xml");
@@ -79,9 +80,6 @@ namespace File_Search_Engine_System
                     }
 
                 }
-
-
-
             }
         }
 
@@ -94,6 +92,8 @@ namespace File_Search_Engine_System
 
         private void DoneButton_Click(object sender, EventArgs e)
         {
+           
+            catCombo.Items.Add(CategorytextBox.Text);
 
             if (!File.Exists("Categories.xml"))
             {
@@ -110,8 +110,11 @@ namespace File_Search_Engine_System
 
                     Category C = new Category();
                     C.categoryName = categoryname;
-                    C.keywords = l;
-                    Home.mapOfCategories[categoryname] = C;
+                    Home.mapOfCategories[C.categoryName] = C;
+                    foreach (string keyword in l)
+                    {
+                        Home.mapOfCategories[C.categoryName].keywords.Add(keyword);
+                    }
 
                     MessageBox.Show("This category is successfully added!");
                     writer.WriteStartElement("Categories");
@@ -139,9 +142,9 @@ namespace File_Search_Engine_System
                     l.Clear();
                 }
             }
+
             else
             {
-
 
                 XmlDocument doc = new XmlDocument();
                 doc.Load("Categories.xml");
@@ -155,17 +158,18 @@ namespace File_Search_Engine_System
                     CheckDict[categoryname] = true;
 
                     Category C = new Category();
-                    C.categoryName = categoryname;
-                    C.keywords = l;
-                    Home.mapOfCategories[categoryname] = C;
+                    C.categoryName = categoryname; ;
+                    Home.mapOfCategories[C.categoryName] = C;
+                    foreach(string keyword in l)
+                    {
+                        Home.mapOfCategories[C.categoryName].keywords.Add(keyword);
+                    }
 
                     XmlElement cat = doc.CreateElement("Category");
 
                     XmlElement node = doc.CreateElement("CategoryName");
                     node.InnerText = categoryname;
                     cat.AppendChild(node);
-
-
 
                     foreach (var x in D[categoryname])
                     {
@@ -178,17 +182,77 @@ namespace File_Search_Engine_System
                     root.AppendChild(cat);
                     doc.Save("Categories.xml");
 
-
                     l.Clear();
                 }
 
             }
         }
 
+        private void catCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            infoRichTextBox.Visible = true;
+            infoRichTextBox.Clear();
+
+            string selectedCat = catCombo.SelectedItem.ToString();
+
+
+            List<string> keywords = new List<string>();
+            keywords = Home.mapOfCategories[selectedCat].keywords;
+
+            string CatNameValue = Home.mapOfCategories[selectedCat].categoryName;
+
+            infoRichTextBox.Text += "Category Name: " + CatNameValue + Environment.NewLine;
+            infoRichTextBox.Text += "Keywords: ";
+
+            for (int i = 0; i < keywords.Count; i++)
+            {
+                if (i != keywords.Count - 1)
+                    infoRichTextBox.Text += keywords[i] + ", ";
+
+                else
+                    infoRichTextBox.Text += keywords[i] + ".";
+
+            }
+
+
+            //coloring tag names
+            int start = 0;
+            int end = infoRichTextBox.Text.LastOrDefault();
+
+            while (start < end)
+            {
+                infoRichTextBox.Find("Category Name:", start, infoRichTextBox.TextLength, RichTextBoxFinds.MatchCase);
+                infoRichTextBox.SelectionColor = Color.DarkMagenta;
+                infoRichTextBox.Find("Keywords:", start, infoRichTextBox.TextLength, RichTextBoxFinds.MatchCase);
+                infoRichTextBox.SelectionColor = Color.DarkMagenta;
+
+
+                start = infoRichTextBox.Text.LastOrDefault() + 1;
+            }
+
+        }
+
+        private void filesButton_Click(object sender, EventArgs e)
+        {
+            AddFile form = new AddFile();
+            form.Show();
+            this.Hide();
+        }
+
+        private void AddCategory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void fillCatCombo()
+        {
+            foreach (KeyValuePair<string, Category> KVP in Home.mapOfCategories)
+            {
+                catCombo.Items.Add(KVP.Key);
+            }
+        }
 
     }
-
-
 
 }
 
