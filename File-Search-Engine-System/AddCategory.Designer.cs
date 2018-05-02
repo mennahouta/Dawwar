@@ -40,6 +40,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CategorytextBox
@@ -120,7 +121,7 @@
             this.infoRichTextBox.BackColor = System.Drawing.Color.White;
             this.infoRichTextBox.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.infoRichTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(1)))), ((int)(((byte)(44)))));
-            this.infoRichTextBox.Location = new System.Drawing.Point(390, 463);
+            this.infoRichTextBox.Location = new System.Drawing.Point(365, 465);
             this.infoRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.infoRichTextBox.Name = "infoRichTextBox";
             this.infoRichTextBox.ReadOnly = true;
@@ -134,7 +135,7 @@
             this.catCombo.BackColor = System.Drawing.Color.White;
             this.catCombo.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.catCombo.FormattingEnabled = true;
-            this.catCombo.Location = new System.Drawing.Point(560, 417);
+            this.catCombo.Location = new System.Drawing.Point(518, 415);
             this.catCombo.Name = "catCombo";
             this.catCombo.Size = new System.Drawing.Size(257, 34);
             this.catCombo.TabIndex = 20;
@@ -145,7 +146,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(400, 425);
+            this.label4.Location = new System.Drawing.Point(367, 418);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 26);
             this.label4.TabIndex = 19;
@@ -185,12 +186,29 @@
             this.label3.TabIndex = 24;
             this.label3.Text = "Category Name:";
             // 
+            // deleteButton
+            // 
+            this.deleteButton.FlatAppearance.BorderSize = 0;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
+            this.deleteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(19)))), ((int)(((byte)(44)))));
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Location = new System.Drawing.Point(780, 396);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(123, 65);
+            this.deleteButton.TabIndex = 25;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // AddCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(915, 633);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox1);
@@ -227,6 +245,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

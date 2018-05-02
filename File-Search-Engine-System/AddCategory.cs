@@ -243,6 +243,41 @@ namespace File_Search_Engine_System
             Application.Exit();
         }
 
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string delcategoryname;
+            bool found = false;
+            DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Category?", "Warning", MessageBoxButtons.YesNo);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load("Categories.xml");
+                XmlNodeList parent = doc.GetElementsByTagName("Category");
+                for (int i = 0; i < parent.Count; i++)
+                {
+                    XmlNodeList childrens = parent[i].ChildNodes;
+                    delcategoryname = childrens[0].InnerText;
+                    if (delcategoryname == catCombo.SelectedItem.ToString())
+                    {
+                        parent[i].ParentNode.RemoveChild(parent[i]);
+
+                        Home.mapOfCategories.Remove(delcategoryname);
+
+                        catCombo.Items.Remove(delcategoryname);
+
+                        found = true;
+                    }
+
+                }
+                doc.Save("Categories.xml");
+                if (found == true)
+                    MessageBox.Show("Category Successfully Deleted.");
+                else
+                    MessageBox.Show("There's no category with this name!");
+
+            }
+        }
+
         private void fillCatCombo()
         {
             foreach (KeyValuePair<string, Category> KVP in Home.mapOfCategories)

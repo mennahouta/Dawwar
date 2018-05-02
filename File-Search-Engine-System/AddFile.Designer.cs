@@ -191,7 +191,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(419, 395);
+            this.label4.Location = new System.Drawing.Point(434, 395);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 26);
             this.label4.TabIndex = 16;
@@ -204,7 +204,7 @@
             this.fileCombo.FormattingEnabled = true;
             this.fileCombo.Location = new System.Drawing.Point(559, 387);
             this.fileCombo.Name = "fileCombo";
-            this.fileCombo.Size = new System.Drawing.Size(261, 34);
+            this.fileCombo.Size = new System.Drawing.Size(232, 34);
             this.fileCombo.TabIndex = 17;
             this.fileCombo.SelectedIndexChanged += new System.EventHandler(this.fileCombo_SelectedIndexChanged);
             // 
@@ -244,7 +244,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddFile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddFile";
+            this.Text = "Files";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddFile_FormClosed);
             this.Load += new System.EventHandler(this.AddFile_Load);
             this.ResumeLayout(false);
