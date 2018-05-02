@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.fileCombo = new System.Windows.Forms.ComboBox();
             this.infoRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newFileButton
@@ -149,7 +150,7 @@
             this.homeButton.Image = ((System.Drawing.Image)(resources.GetObject("homeButton.Image")));
             this.homeButton.Location = new System.Drawing.Point(0, -2);
             this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(315, 315);
+            this.homeButton.Size = new System.Drawing.Size(315, 354);
             this.homeButton.TabIndex = 13;
             this.homeButton.Text = "Home";
             this.homeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,9 +167,9 @@
             this.catButton.Font = new System.Drawing.Font("Trebuchet MS", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(2)))), ((int)(((byte)(40)))));
             this.catButton.Image = global::File_Search_Engine_System.Properties.Resources.icon__2_;
-            this.catButton.Location = new System.Drawing.Point(0, 319);
+            this.catButton.Location = new System.Drawing.Point(0, 358);
             this.catButton.Name = "catButton";
-            this.catButton.Size = new System.Drawing.Size(315, 315);
+            this.catButton.Size = new System.Drawing.Size(315, 352);
             this.catButton.TabIndex = 14;
             this.catButton.Text = "Categories";
             this.catButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -191,7 +192,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
-            this.label4.Location = new System.Drawing.Point(434, 395);
+            this.label4.Location = new System.Drawing.Point(434, 452);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 26);
             this.label4.TabIndex = 16;
@@ -202,7 +203,7 @@
             this.fileCombo.BackColor = System.Drawing.Color.White;
             this.fileCombo.Font = new System.Drawing.Font("Trebuchet MS", 12F);
             this.fileCombo.FormattingEnabled = true;
-            this.fileCombo.Location = new System.Drawing.Point(559, 387);
+            this.fileCombo.Location = new System.Drawing.Point(559, 449);
             this.fileCombo.Name = "fileCombo";
             this.fileCombo.Size = new System.Drawing.Size(232, 34);
             this.fileCombo.TabIndex = 17;
@@ -213,7 +214,7 @@
             this.infoRichTextBox.BackColor = System.Drawing.Color.White;
             this.infoRichTextBox.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold);
             this.infoRichTextBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(1)))), ((int)(((byte)(44)))));
-            this.infoRichTextBox.Location = new System.Drawing.Point(394, 435);
+            this.infoRichTextBox.Location = new System.Drawing.Point(410, 502);
             this.infoRichTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.infoRichTextBox.Name = "infoRichTextBox";
             this.infoRichTextBox.ReadOnly = true;
@@ -221,13 +222,32 @@
             this.infoRichTextBox.TabIndex = 18;
             this.infoRichTextBox.Text = "";
             this.infoRichTextBox.Visible = false;
+            this.infoRichTextBox.TextChanged += new System.EventHandler(this.infoRichTextBox_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(6)))), ((int)(((byte)(40)))));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(478, 375);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(252, 49);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "Add an existing file";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // AddFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(915, 633);
+            this.ClientSize = new System.Drawing.Size(915, 711);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.infoRichTextBox);
             this.Controls.Add(this.fileCombo);
             this.Controls.Add(this.label4);
@@ -267,5 +287,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox fileCombo;
         private System.Windows.Forms.RichTextBox infoRichTextBox;
+        private System.Windows.Forms.Button button1;
     }
 }

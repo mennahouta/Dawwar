@@ -17,6 +17,8 @@ namespace File_Search_Engine_System
     {
         public static List<string> Categories_Name = new List<string>();
         public static string path = @"C:\Users\Menna\Source\Repos\Dawwar\Files\";
+        public static string lastChosenName;
+        public static string lastChosenPath;
 
         public AddFile()
         {
@@ -26,7 +28,7 @@ namespace File_Search_Engine_System
 
         private void loadFilesCombo()
         {
-            foreach(KeyValuePair<string,FILE> KVP in Home.mapOfFiles)
+            foreach (KeyValuePair<string, FILE> KVP in Home.mapOfFiles)
             {
                 fileCombo.Items.Add(KVP.Key);
             }
@@ -71,9 +73,20 @@ namespace File_Search_Engine_System
         private void newFileButton_Click(object sender, EventArgs e)
         {
             string str = textBox1.Text;
-            //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
-            string Url = path + str + ".txt";
             str = str + ".txt";
+            string Url;
+            FolderBrowserDialog d = new FolderBrowserDialog();
+            DialogResult res = d.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                Url = d.SelectedPath + "\\" + str;
+            }
+            else
+            {
+                
+                //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
+                Url = path + str + ".txt";             
+            }
             bool fg = false;
 
             for (int i = 0; i < catCheckList.Items.Count; i++)
@@ -203,7 +216,7 @@ namespace File_Search_Engine_System
         {
             string str = textBox1.Text;
             //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
-            string Url = path + str + ".txt";
+            string Url = Home.mapOfFiles[str].path;
             str = str + ".txt";
             if (str == ".txt")
             {
@@ -222,8 +235,8 @@ namespace File_Search_Engine_System
         {
             string str = textBox1.Text;
             //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
-            string Url = path + str + ".txt";
-            if (str == ".txt")
+            string Url = Home.mapOfFiles[str].path;
+            if (str == ".txt" || str.Length == 0)
             {
                 MessageBox.Show("Please Enter A Valid Name.");
             }
@@ -327,5 +340,166 @@ namespace File_Search_Engine_System
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text.Length == 0)
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                DialogResult dialogResult = fileDialog.ShowDialog();
+                if (dialogResult == DialogResult.OK)
+                {
+                    string nameAndExtension = fileDialog.SafeFileName;
+
+                    lastChosenName = nameAndExtension.Remove(nameAndExtension.Length - 4, 4);
+                    textBox1.Text = lastChosenName;
+
+                    lastChosenPath = fileDialog.FileName;
+
+                    fileDialog.Dispose();
+
+                    DialogResult result = MessageBox.Show("Would you like to select the categories (Click Yes) or do you need category suggestions (Click No)?", "Warning", MessageBoxButtons.YesNo);
+
+                    if (result == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        MessageBox.Show("Please select the categories then click on 'Add an existing file' again.");
+                        return;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Please select categories from the suggestions then click on 'Add an existing file' again.");
+
+                        catCheckList.Items.Clear();
+                        Categories_Name.Clear();
+
+                        FileStream fs = new FileStream(lastChosenPath, FileMode.Open);
+                        StreamReader sr = new StreamReader(fs);
+
+                        while (sr.Peek() != -1)
+                        {
+                            string line = sr.ReadLine();
+                            string[] words = line.Split(' ', ',', '!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', '~');
+                            foreach (string word in words)
+                            {
+                                foreach (KeyValuePair<string, Category> KVP in Home.mapOfCategories)
+                                {
+                                    if (catCheckList.Items.Contains(KVP.Key))
+                                        continue;
+                                    foreach (string keyword in KVP.Value.keywords)
+                                    {
+                                        if (word == keyword)
+                                        {
+                                            catCheckList.Items.Add(KVP.Key);
+                                            Categories_Name.Add(KVP.Key);
+                                            break;
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+                bool fg = false;
+
+                for (int i = 0; i < catCheckList.Items.Count; i++)
+                {
+                    if (catCheckList.GetItemCheckState(i) == CheckState.Checked)
+                    {
+                        fg = true;
+                        break;
+                    }
+                }
+
+                if (fg == false)
+                {
+
+                    MessageBox.Show("You have to select category/ies. Please retry.");
+                    return;
+                }
+
+                if (lastChosenPath.Length == 0 || lastChosenName.Length==0)
+                {
+                    MessageBox.Show("You have to select a file first.");
+                    return;
+                }
+                //string path = @"C:\Users\Menna\Source\Repos\File-Search-Engine-System\Files\";
+                string Url = lastChosenPath;
+
+                List<string> categories = new List<string>();
+                XmlDocument doc = new XmlDocument();
+                XmlElement FileInfo = doc.CreateElement("FileInfo");
+                XmlElement node = doc.CreateElement("FileName");
+                node.InnerText = lastChosenName;
+                FileInfo.AppendChild(node);
+                node = doc.CreateElement("Path");
+                node.InnerText = Url;
+                FileInfo.AppendChild(node);
+                node = doc.CreateElement("Categories");
+                bool f = false;
+                string node_text = "";
+                for (int i = 0; i < catCheckList.Items.Count; i++)
+                {
+                        if (catCheckList.GetItemCheckState(i) == CheckState.Checked)
+                        {
+                            if (f == false)
+                            {
+                                node_text += Categories_Name[i];
+                                node_text += " ";
+                                f = true;
+                            }
+                            else
+                            {
+                                node_text += Categories_Name[i];
+                                node_text += " ";
+                            }
+                            categories.Add(Categories_Name[i]);
+                        }
+                }
+                node.InnerText = node_text;
+                FileInfo.AppendChild(node);
+                doc.Load("TextFiles.xml");
+                XmlElement root = doc.DocumentElement;
+                root.AppendChild(FileInfo);
+                doc.Save("TextFiles.xml");
+
+                FILE ff = new FILE();
+                ff.fileName = lastChosenName;
+                ff.path = lastChosenPath;
+                Home.mapOfFiles[ff.fileName] = ff;
+                foreach (string cat in categories)
+                {
+                    Home.mapOfFiles[ff.fileName].fileCategories.Add(cat);
+                }
+
+                fileCombo.Items.Add(ff.fileName);
+
+                fileCombo.SelectedIndex = fileCombo.Items.Count - 1;
+
+                textBox1.Clear();
+                lastChosenName = "";
+                lastChosenPath = "";
+                catCheckList.Items.Clear();
+                Categories_Name.Clear();
+                foreach(KeyValuePair<string,Category> KVP in Home.mapOfCategories)
+                {
+                    catCheckList.Items.Add(KVP.Key);
+                    Categories_Name.Add(KVP.Key);
+                }
+
+            }
+        }
+
+    private void infoRichTextBox_TextChanged(object sender, EventArgs e)
+    {
+
     }
+}
 }

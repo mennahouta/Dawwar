@@ -17,10 +17,13 @@ namespace File_Search_Engine_System
     {
         public static Dictionary<string, FILE> mapOfFiles = new Dictionary<string, FILE>();
         public static Dictionary<string, Category> mapOfCategories = new Dictionary<string, Category>();
+        //public static Dictionary<string, string> mapOfKeywords = new Dictionary<string, string>();
 
         public Home()
         {
             InitializeComponent();
+            fillFilesMap();
+            fillCatMapAndCombo();
         }
 
         private void fillFilesMap()
@@ -84,8 +87,7 @@ namespace File_Search_Engine_System
 
         private void Home_Load(object sender, EventArgs e)
         {
-            fillFilesMap();
-            fillCatMapAndCombo();
+            
         }
 
         private void catButton_Click(object sender, EventArgs e)
@@ -207,7 +209,7 @@ namespace File_Search_Engine_System
 
             clearRich();
 
-            FileStream fs = new FileStream(mapOfFiles[fileCombo.SelectedItem.ToString()].path, FileMode.Open);
+            FileStream fs = new FileStream(mapOfFiles[fileCombo.SelectedItem.ToString()].path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             StreamReader sr = new StreamReader(fs);
             while (sr.Peek() != -1)
             {

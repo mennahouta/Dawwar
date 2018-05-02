@@ -23,8 +23,9 @@ namespace File_Search_Engine_System
 
         public static Dictionary<string, List<string>> D = new Dictionary<string, List<string>>();
         Dictionary<string, bool> CheckDict = new Dictionary<string, bool>();
+        //Dictionary<string, string> mapOfKeywords = new Dictionary<string, string>();
 
-        string categoryname, keyword;
+        string categoryname;
         List<string> richlist = new List<string>();
         //List<string> l = new List<string>();
 
@@ -106,6 +107,7 @@ namespace File_Search_Engine_System
                     foreach(string keyword in richlist)
                     {
                          C.keywords.Add(keyword);
+                         //Home.mapOfKeywords.Add(keyword, C.categoryName);
                     }
                     Home.mapOfCategories[C.categoryName] = C;
 
@@ -159,6 +161,7 @@ namespace File_Search_Engine_System
                     foreach (string keyword in richlist)
                     {
                         C.keywords.Add(keyword);
+                        //Home.mapOfKeywords.Add(keyword, C.categoryName);
                     }
                     Home.mapOfCategories[C.categoryName] = C;
                     catCombo.Items.Add(C.categoryName);
@@ -245,6 +248,11 @@ namespace File_Search_Engine_System
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if(catCombo.SelectedIndex==-1)
+            {
+                MessageBox.Show("Please select a category from the combo box to be deleted.");
+                return;
+            }
             string delcategoryname;
             bool found = false;
             DialogResult result = MessageBox.Show("Are You Sure You Want To Delete This Category?", "Warning", MessageBoxButtons.YesNo);
@@ -260,6 +268,11 @@ namespace File_Search_Engine_System
                     if (delcategoryname == catCombo.SelectedItem.ToString())
                     {
                         parent[i].ParentNode.RemoveChild(parent[i]);
+
+                        //foreach(string keyword in Home.mapOfCategories[delcategoryname].keywords)
+                        //{
+                        //    Home.mapOfKeywords.Remove(keyword);
+                        //}
 
                         Home.mapOfCategories.Remove(delcategoryname);
 
